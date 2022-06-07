@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row ,Alert} from 'react-bootstrap'
 import Contact from './Contact'
 
 export default function Contacts() {
 
     
     const[contacts,setContacts]=useState([])
+    // const[loading]=useState('Loading.....')
     const[isLoading,setIsLoading]=useState(false)
 
     useEffect(()=>{
@@ -15,9 +16,10 @@ export default function Contacts() {
 
     const getContacts = async ()=>{
         try {
-            const res = await axios.get("https://randomuser.me/api/?results=12");
+            const res = await axios.get("https://randomuser.me/api/?results=30");
             setContacts(res.data.results);
             setIsLoading(true)
+
 
         } catch (err) {
             alert(err.message)
@@ -29,6 +31,11 @@ export default function Contacts() {
     <div>
     <Container>
     <Row>
+    <Alert variant='danger' className='mt-5'>
+
+     <Alert.Heading>Contact Details</Alert.Heading>
+
+     </Alert>
         {isLoading && 
         contacts.map((contact)=>{
             return(
