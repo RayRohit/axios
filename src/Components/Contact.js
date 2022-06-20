@@ -37,7 +37,7 @@ export default function Contact( {contact} ) {
                     {contact.email}
                 </Card.Text>
                 <a href={`mailto:${contact.email}`}>
-                <Button style={{borderRadius:"20px"}} className="w-100" variant="primary">Contact</Button>
+                <Button style={{borderRadius:"20px"}} className="w-100" variant="primary">E-Mail</Button>
                 </a>
 
             </Card.Body>

@@ -1,5 +1,7 @@
 import React from 'react'
 import { Alert,Container,Row,Col } from 'react-bootstrap'
+import UseCon from '../UseCon'
+import UseRed from '../UseRed'
 
 export default function Aalert() {
   return (
@@ -13,7 +15,7 @@ export default function Aalert() {
      </Alert>
      <Row>
        <Col sm={12} md={6} lg={4}>
-     <Alert variant='danger' className='mt-5'>
+     <Alert variant='danger' className='mt-3'>
      <figure>
    <blockquote className="blockquote">
      <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -28,7 +30,7 @@ export default function Aalert() {
        </Col>
 
        <Col sm={12} md={6} lg={4}>
-     <Alert variant='danger' className='mt-5'>
+     <Alert variant='danger' className='mt-3'>
      <figure>
    <blockquote className="blockquote">
      <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -44,9 +46,9 @@ export default function Aalert() {
 
 
          <Col sm={12} md={6} lg={4}>
-     <Alert variant='danger' className='mt-5'>
+     <Alert variant='danger' className='mt-3'>
      <figure>
-   <blockquote class="blockquote">
+   <blockquote className="blockquote">
      <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     
    </blockquote>
@@ -58,8 +60,15 @@ export default function Aalert() {
 
        </Col>
      </Row>
-     
+     <Alert>
+     <UseRed />
+     </Alert>
+
+     <Alert>
+      <UseCon />
+    </Alert>
     </Container>
+    
     </div>
   )
 }

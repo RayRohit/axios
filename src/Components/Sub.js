@@ -9,21 +9,29 @@ export default function Sub() {
         initialValues:{
             name:"",
             email:"",
-            password:"",
-            passwordConfirmation:""
+            phone:"",
+            imageInput:"",
+            street:"",
+            city:"",
+            state:"",
+            country:""
+            
         },
         onSubmit:values=>{
             alert(JSON.stringify(values));
+        console.log(values);
+
         },
         validationSchema:Yup.object({
             name:Yup.string().required('Please Fill The Above Field'),
             email:Yup.string().required('Please Fill The Above Field').email('Invalid Email Format'),
-            password: Yup.string()
-            .required('No password provided.') 
-            .min(8, 'Password is too short - should be 8 chars minimum.')
-            .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
-            passwordConfirmation: Yup.string()
-             .oneOf([Yup.ref('password'), null], 'Passwords must match')
+            phone:Yup.string().required('please enter your phone number').max(12,'max of 12 characters').min(10,'min of 10 characters'),
+            imageInput:Yup.string().required('Please Insert your Image '),
+            street:Yup.string().required('please fill the above field'),
+            city:Yup.string().required('please fill the above field'),
+            state:Yup.string().required('please fill the above field'),
+            country:Yup.string().required('please fill the above field'),
+
         })
 
     })
@@ -38,12 +46,12 @@ export default function Sub() {
 </Alert>
 
     <Row  className="justify-content-md-center">
-    <Col sm={12} md={6} lg={4}>
+    <Col sm={12} md={8} lg={6}>
     <Alert className='mt-3'>
     <Form onSubmit={formik.handleSubmit}>
     
     <Form.Group className="mb-3">
-    <Form.Label htmlFor='name'> Name :</Form.Label>
+    <Form.Label htmlFor='name'> Name </Form.Label>
     <Form.Control type="text" id='fname' name="name" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur} placeholder="Enter Name" />
     <div>
     {formik.touched.name && formik.errors.name?<div style={{color:'red'}}>{formik.errors.name}</div>:null} 
@@ -61,27 +69,79 @@ export default function Sub() {
     {formik.touched.email && formik.errors.email?<div style={{color:'red'}}>{formik.errors.email}</div>:null}
     </div>
   </Form.Group>
-
   <Form.Group className="mb-3">
-    <Form.Label htmlFor='password'>Create Password</Form.Label>
-    <Form.Control type="password" id='password' name="password" value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur} placeholder="Enter Password" />
+    <Form.Label htmlFor='phone'> Phone</Form.Label>
+    <Form.Control type="number" id='phone' name="phone" value={formik.values.phone} onChange={formik.handleChange} onBlur={formik.handleBlur} placeholder="Enter Phone Number" />
     <div>
-  {formik.touched.password && formik.errors.password?<div style={{color:'red'}}>{formik.errors.password}</div>:null} 
+    {formik.touched.phone && formik.errors.phone?<div style={{color:'red'}}>{formik.errors.phone}</div>:null} 
+        
+    </div>
+    </Form.Group>
 
-  </div>
-  </Form.Group>
-
-  <Form.Group className="mb-3">
-    <Form.Label htmlFor='passwordConfirmation'>Confirm Password</Form.Label>
-    <Form.Control type="password" id='passwordConfirmation' name="passwordConfirmation" value={formik.values.passwordConfirmation} onChange={formik.handleChange} onBlur={formik.handleBlur} placeholder="Enter Password" />
+    <Form.Group>
+      <Form.Label htmlFor='imageInput'>Insert Your Image</Form.Label>
+      <Form.Control type='file' id='imageInput' name='imageInput' onChange={formik.handleChange} value={formik.values.imageInput} onBlur={formik.handleBlur} ></Form.Control>
     <div>
-  {formik.touched.passwordConfirmation && formik.errors.passwordConfirmation?<div style={{color:'red'}}>{formik.errors.passwordConfirmation}</div>:null} 
+    {formik.touched.imageInput && formik.errors.imageInput?<div style={{color:'red'}}>{formik.errors.imageInput}</div>:null}
+    </div>
+    </Form.Group>
+    <Row className='mt-3'>
+    <Col>
+    <Form.Group>
+      <Form.Label htmlFor='street'>Street</Form.Label>
+      <Form.Control type='text' name='street' id='street' value={formik.values.street} onChange={formik.handleChange} onBlur={formik.handleBlur}   placeholder='enter your street'/>
+      <div>
+    {formik.touched.street && formik.errors.street?<div style={{color:'red'}}>{formik.errors.street}</div>:null} 
 
-  </div>
-  </Form.Group>
+      </div>
+    </Form.Group>
+    </Col>
+
+    <Col>
+    <Form.Group>
+      <Form.Label htmlFor='city'>City</Form.Label>
+      <Form.Control type='text' name='city' id='city' value={formik.values.city} onChange={formik.handleChange} onBlur={formik.handleBlur}  placeholder='enter your City'/>
+    <div>
+    {formik.touched.city && formik.errors.city?<div style={{color:'red'}}>{formik.errors.city}</div>:null} 
+
+    </div>
+    </Form.Group>
+    </Col>
+    </Row>
+
+    <Row className='mt-3'>
+    <Col>
+    <Form.Group>
+      <Form.Label htmlFor='state'>State</Form.Label>
+      <Form.Control type='text' name='state' id='state' value={formik.values.state} onChange={formik.handleChange} onBlur={formik.handleBlur}  placeholder='enter your state'/>
+    <div>
+    {formik.touched.state && formik.errors.state?<div style={{color:'red'}}>{formik.errors.state}</div>:null} 
+
+    </div>
+    </Form.Group>
+    </Col>
+
+    <Col>
+    <Form.Group>
+      <Form.Label htmlFor='country'>Country</Form.Label>
+      <Form.Control type='text' name='country' id='country' value={formik.values.country} onChange={formik.handleChange} onBlur={formik.handleBlur}  placeholder='enter your Country'/>
+   <div>
+    {formik.touched.country && formik.errors.country?<div style={{color:'red'}}>{formik.errors.country}</div>:null} 
+
+   </div>
+    </Form.Group>
+    </Col>
+    </Row>
+
+     {/* <div class="form-group">
+      <label for="formFile" class="form-label mt-4">Default file input example</label>
+      <input class="form-control" type="file" id="formFile" />
+    </div> */}
+
+  
   
 
-    <Button type="submit" variant="primary">Submit</Button>
+    <Button type="submit" variant="primary" className='mt-3'>Submit</Button>
 
 
 
